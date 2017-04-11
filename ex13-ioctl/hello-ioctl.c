@@ -34,7 +34,7 @@
 
 MODULE_LICENSE ("GPL");
 
-int hello_major = 253;
+int hello_major = 255;
 int hello_minor = 0;
 int number_of_devices = 1;
 char data[128]="\0";
@@ -54,7 +54,7 @@ static int hello_release (struct inode *inode, struct file *file)
   return 0;
 }
 
-int hello_ioctl (struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg)
+static long hello_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 {
   int ret=0;
 
@@ -81,7 +81,7 @@ struct file_operations hello_fops = {
   .owner = THIS_MODULE,
   .open  = hello_open,
   .release = hello_release,
-  .ioctl = hello_ioctl,
+  .unlocked_ioctl = hello_ioctl,
 };
 
 static void char_reg_setup_cdev (void)

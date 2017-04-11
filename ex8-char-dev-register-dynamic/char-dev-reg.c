@@ -30,7 +30,7 @@
 
 MODULE_LICENSE ("GPL");
 
-int hello_major = 253;
+int hello_major = 255;
 int hello_minor = 0;
 int number_of_devices = 1;
 

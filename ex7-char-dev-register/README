@@ -24,7 +24,9 @@ To remove the module, do (as root):
 
   # rmmod char-dev-reg
 
-Kernel log messages can be viewed from the output of dmesg.
+Kernel log messages can be viewed from the output of 
+
+  # dmesg | tail
 
 To cleanup the compiled modules, use:
 

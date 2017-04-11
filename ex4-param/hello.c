@@ -40,8 +40,8 @@ static short int myshort = 1;
 static int myint = 420;
 static long int mylong = 9999;
 static char *mystring = "blah";
-static int array[2]= {-1, -1};
-static int arr_argc = 0;
+//static int array[2]= {-1, -1};
+//static int arr_argc = 0;
 
 module_param (myshort, short, 0000);
 MODULE_PARM_DESC (myshort, "A short integer");
@@ -57,7 +57,7 @@ MODULE_PARM_DESC (mystring, "A character string");
 
 static int __init hello_2_init (void)
 {
-	int i;
+	//int i;
 
 	printk (KERN_INFO "myshort is a short integer: %hd\n", myshort);
 	printk (KERN_INFO "myint is an integer: %d\n", myint);

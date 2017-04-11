@@ -6,7 +6,7 @@ else
 	DEBFLAGS = -O2
 endif
 
-CFLAGS += $(DEBFLAGS)	
+c_flags += $(DEBFLAGS)	
 
 obj-m	+= hello.o
 

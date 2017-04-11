@@ -26,7 +26,7 @@ You can check for an entry for the module (if it is loaded) from the output of:
 
 Create a device file using:
 
-  # mknod /dev/hello c 253 0
+  # mknod /dev/hello c 255 0
 
 Provide executable permissions to test, and run the application to test it:
 
@@ -36,7 +36,9 @@ To remove the module, do (as root):
 
   # rmmod char-dev-reg
 
-Kernel log messages can be viewed from the output of dmesg.
+Kernel log messages can be viewed from the output of 
+
+  # dmesg | tail
 
 To cleanup the compiled modules, use:
 

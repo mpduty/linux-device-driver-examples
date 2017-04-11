@@ -30,7 +30,7 @@
 
 MODULE_LICENSE ("GPL");
 
-int hello_major = 253;
+int hello_major = 255;
 int hello_minor = 0;
 int number_of_devices = 1;
 char data[128]="\0";
@@ -53,7 +53,7 @@ static int hello_release (struct inode *inode, struct file *file)
 ssize_t hello_write (struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)
 {
   ssize_t ret = 0;
-  printk (KERN_INFO "Writing %d bytes\n", count);
+  printk (KERN_INFO "Writing %lu bytes\n", count);
   if (count>127) return -ENOMEM;
   if (count<0) return -EINVAL;
   if (copy_from_user (data, buf, count)) {

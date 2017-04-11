@@ -29,6 +29,12 @@
 
 MODULE_LICENSE ("GPL");
 
+struct proc_dir_entry *proc_file_entry;
+
+static const struct file_operations proc_file_fops = {
+	.owner = THIS_MODULE,
+};
+
 int hello_read_procmem (char *buf, char **start, off_t offset, int count, int *eof, void *data)
 {
   int len = 0;
@@ -37,9 +43,10 @@ int hello_read_procmem (char *buf, char **start, off_t offset, int count, int *e
   return len;
 }
 
+
 static void hello_create_proc (void)
 {
-  create_proc_read_entry ("hello", 0, NULL, hello_read_procmem, NULL);
+  proc_create("hello", 0, NULL, &proc_file_fops);
 }
 
 int init_module (void)

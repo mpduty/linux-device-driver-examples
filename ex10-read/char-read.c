@@ -31,10 +31,10 @@
 
 MODULE_LICENSE ("GPL");
 
-int hello_major = 253;
+int hello_major = 255;
 int hello_minor = 0;
 int number_of_devices = 1;
-char data[50]="foobar not equal to barfoo";
+char data[130]="foobar not equal to barfoo";
 
 struct cdev cdev;
 dev_t dev = 0;
@@ -57,14 +57,14 @@ ssize_t hello_read (struct file *filp, char *buff, size_t count, loff_t *offp)
   if (copy_to_user (buff, data, sizeof(data)-1)) 
     result = -EFAULT;
   else 
-    printk (KERN_INFO "wrote %d bytes\n", count);
+    printk (KERN_INFO "wrote %lu bytes\n", count);
    return result;
 }
 
 ssize_t hello_write (struct file *filp, const char  *buf, size_t count, loff_t *f_pos)
 {
   ssize_t ret = 0;
-  printk (KERN_INFO "Writing %d bytes\n", count);
+  printk (KERN_INFO "Writing %lu bytes\n", count);
   if (count>127) return -ENOMEM;
   if (count<0) return -EINVAL;
   if (copy_from_user (data, buf, count)) {
